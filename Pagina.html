@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta Especial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lovelyn&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to top right, #ffcccc, #ffe6e6);
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .background-decor {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .decor-item {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      opacity: 0.7;
+      animation: floatDecor 10s infinite ease-in-out;
+    }
+
+    .decor-heart {
+      background: url('https://i.imgur.com/Qp1v7qS.png') no-repeat center/contain;
+    }
+
+    .decor-flower {
+      background: url('https://i.imgur.com/K8mTQ7K.png') no-repeat center/contain;
+    }
+
+    .decor-balloon {
+      background: url('https://i.imgur.com/x3Lq0Rk.png') no-repeat center/contain;
+    }
+
+    .decor-tulip {
+      background: url('https://i.imgur.com/6P8K8nA.png') no-repeat center/contain;
+    }
+
+    .decor-cloud {
+      background: url('https://i.imgur.com/1o8JZxA.png') no-repeat center/contain;
+    }
+
+    @keyframes floatDecor {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      width: 400px;
+      height: 300px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      background: #ff9999;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      transition: transform 0.6s ease-in-out;
+      overflow: hidden;
+    }
+
+    .envelope:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #ff6666;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .envelope .label {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 22px;
+      text-align: center;
+      line-height: 1.5;
+      font-family: 'Lovelyn', cursive;
+    }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #fff;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      font-size: 24px;
+      color: #ff4d4d;
+      transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+      z-index: 1;
+      opacity: 0;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+    }
+
+    .heart {
+      width: 25px;
+      height: 25px;
+      background: #ff4d4d;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: float 3s infinite ease-in-out;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: '';
+      width: 25px;
+      height: 25px;
+      background: #ff4d4d;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart:before {
+      top: -12.5px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: -12.5px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .open .envelope {
+      transform: translateY(30px) scale(1.05);
+    }
+
+    .open .envelope:before {
+      transform: rotateX(-180deg);
+    }
+
+    .open .message {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .open .hearts {
+      display: block;
+    }
+
+    .message p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-decor">
+    <div class="decor-item decor-heart" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="decor-item decor-flower" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="decor-item decor-balloon" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="decor-item decor-tulip" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="decor-item decor-cloud" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="decor-item decor-heart" style="left: 60%; animation-delay: 0.5s;"></div>
+    <div class="decor-item decor-tulip" style="left: 70%; animation-delay: 1.5s;"></div>
+    <div class="decor-item decor-cloud" style="left: 80%; animation-delay: 2.5s;"></div>
+    <div class="decor-item decor-flower" style="left: 90%; animation-delay: 3.5s;"></div>
+  </div>
+  <div class="container" onclick="openLetter()">
+    <div class="envelope">
+      <div class="label">De: Uriel <br> Para: Mis ojitos lindos Henessey</div>
+    </div>
+     <div class="message">
+      <p>🌹🌹🌹 Hola corazón de melón!!! 💖💖💖</p>
+      <p>Sé que estas pasando por un momento super dificil, entre miedos, dolor y sufrimiento</p>
+      <p>Primero que nada quiero pedirte perdón, sé que te molesta que lo diga pero creeme que seguire diciendolo</p>
+      <p>Me siento tan culpable de lo que pasa, solo quiero que estes bien, te dare mi vida si es necesario</p>
+      <p>Probablemente me odies, estes enojada conmigo o ya no me quieras y no es para menos lo entiendo perfectamente</p>
+      <p>Lo ultimo que queria era que sufrieras por mi culpa, aun asi esta carta no es de mi, quiero decirte que</p>
+      <p>Eres una niña increible, más fuerte fisica y mentalmente que nadie, haz pasado por tanto y nadie se a acercado</p>
+      <p>A decirte lo bien que lo haz hecho, valoro todo lo que haces y sigues haciendo, el seguir adelante a pesar de todo</p>
+      <p>Creeme que he visto a personas aparentemente más fuertes rendirse, pero tu eres a pesar de tu corta edad alguien</p>
+      <p>Increible en muchos sentidos, se que no es facil y menos con todo lo que pasa, me parte el alma escuchar</p>
+      <p>Cuando dices, "¿Por qué a mi?", lo sé me pregunto lo mismo, no mereces eso, ultimamente me la paso orando y</p>
+      <p>Preguntando a Dios el por qué paso asi, no creo que tu merezcas esto, eres una niña tan buena, para mi</p>
+      <p>Sin duda eres una persona hermosa y no solo lo digo por el fisico lo digo más por tu corazón, tienes un</p>
+      <p>Alma tan bondadosa, lo he visto, soy una persona que se fija en las pequeñas acciones y detalles que haces</p>
+      <p>Dicen que el que es bueno en lo poco es bueno en lo mucho, y se la calidad de persona que eres</p>
+      <p>¡Por algo me enamore de ti Henessey 💖!!!!!!</p>
+      <p>Eres algo que no habia visto en tanto tiempo, tu llenaste de color mi vida tan gris, eres ese rayo de luz que</p>
+      <p>Pense que nunca llegaria, pero aqui estas, gracias por eso, gracias por todo lo que haces aunque no te des cuenta,</p>
+      <p>MUCHAS GRACIAS</p>
+      <p>Este momento no es facil, se lo duro que lo pasas, pero te aseguro que todo mejorara, por más duro que se mire</p>
+      <p>Nada es eterno, menos los malos momentos, te aseguro que hay un arcoiris al final de esta horrible tormenta</p>
+      <p>Y sobre todo se que la vida te recompensara por todo lo malo que haz pasado, no te rindas por favor</p>
+      <p>Como quisera cambiar tu realidad y hacer que estes bien, si me pidieran mi vida para cambiar la tuya sin</p>
+      <p>Dudar la daria, porque para mi eres lo más importante que hay, probablemente no tengas ni animos ni ganas de estar conmigo</p>
+      <p>Lo entiendo perfectamente, para mi soy un mounstro, y la vida me dara mi merecido, igual tu puedes hacer con mi vida lo que quieras</p>
+      <p>Espero algun dia tener tu perdón y sobre todo tener ese amor tan lindo que me tenias, yo te amo tanto, que nunca pense sentir esto</p>
+      <p>Sea como sea y aunque tu no me quieras cercas, o ya no me ames o me odies, seguire aqui, hasta el fin de mi vida, sean malos, buenos</p>
+      <p>O los peores, aqui estare para ti, para escucharte, para apoyarte, para abrazarte, para impulsarte, para que te desahogues</p>
+      <p>Este hombre tan tonto, malo y horrible estara para ti hasta en los momentos más obscuros, siempre, y sobre todo estare para</p>
+      <p>AMARTE, porque te amo con cada parte de mi corazón, con cada respiro que tengo, eres lo unico que esta en mi cabeza dia y noche</p>
+      <p>Dejame demostrarte que el amor existe y que yo puedo curar esas heridas que tienes, aunque no sea muy bueno en lo que hago</p>
+      <p>O que me equivoque más veces de las que acierto, dejame darte todo el amor que siempre haz esperado, la verdad desde que llegaste a</p>
+      <p>Mi vida no he pensado ni he querido a alguien más, solo quiero que seas tu por el resto de mis dias, SOLO TU, si no eres tu prefiero</p>
+      <p>La muerte, sea como sea estare aqui sea dia o noche, sea la hora que sea y lo que sea estare para ti, nunca pienses que eres una molestia</p>
+      <p>O algo similar, para mi gastar mi tiempo, energia o dinero en ti es lo mejor que puedo hacer, siempre estare enamorado de esos ojos lindos</p>
+      <p>Y sobre todo de esa sonrisa tan encantadora, solo quiero que estes bien y puedas disfrutar la vida de nuevo, hare lo que sea y conseguire</p>
+      <p>Lo que se ocupe para que tu estes bien, sigo orando por tu bienestar, te amo mucho mi niña linda.</p>
+        <a href="https://open.spotify.com/intl-es/track/50x1Ic8CaXkYNvjmxe3WXy?si=84355ded32c44eca">CLICK AQUI</a>
+     </div>
+    <div class="hearts">
+      <div class="heart" style="left: -50px; animation-delay: 0s;"></div>
+      <div class="heart" style="left: 0; animation-delay: 0.5s;"></div>
+      <div class="heart" style="left: 50px; animation-delay: 1s;"></div>
+    </div>
+  </div>
+
+  <script>
+    function openLetter() {
+      const container = document.querySelector('.container');
+      container.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
